@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.pact</groupId>
+  <artifactId>KarateAPITesting</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <java.version>17</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <karate-core.version>1.4.1</karate-core.version>
+    <karate-kafka.version>0.2.1</karate-kafka.version>
+    <karate-apache.version>0.9.6</karate-apache.version>
+    <kafka-clients.version>3.7.0</kafka-clients.version>
+    <exec-maven-plugin.version>3.2.0</exec-maven-plugin.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.intuit.karate</groupId>
+      <artifactId>karate-core</artifactId>
+      <version>${karate-core.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.karatelabs</groupId>
+      <artifactId>karate-kafka</artifactId>
+      <version>${karate-kafka.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.intuit.karate</groupId>
+      <artifactId>karate-apache</artifactId>
+      <version>${karate-apache.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>${kafka-clients.version}</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>${exec-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <classpathScope>test</classpathScope>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+
+</project>
