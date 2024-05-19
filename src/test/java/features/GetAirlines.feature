@@ -1,4 +1,4 @@
-Feature: Get airline information
+Feature: Airline information
 
   Scenario: Get all airline data
     Given url 'https://freetestapi.com/api/v1/airlines'
