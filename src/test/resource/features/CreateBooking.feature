@@ -1,10 +1,10 @@
 Feature: Booking API functionalities
 
   Background:
-    * url "https://reqres.in/api"
+    Given url "https://reqres.in/api"
 
   Scenario: Create new user using hardcoded JSON payload
-    Given url "https://reqres.in/api/users"
+    And path "/users"
     And request { "name": "morpheus", "job": "leader" }
     When method post
     Then status 201
@@ -13,7 +13,7 @@ Feature: Booking API functionalities
 
 
   Scenario: Create new user using hardcoded multiline JSON payload
-    Given url "https://reqres.in/api/users"
+    And path "/users"
     And request
     """
     {
@@ -28,7 +28,7 @@ Feature: Booking API functionalities
 
 
   Scenario: Create new user using JSON Object payload
-    Given url "https://reqres.in/api/users"
+    And path "/users"
     * def requestPayload = {}
     * requestPayload.name = "vagabond"
     * requestPayload.job = "roaming around the world"
@@ -40,7 +40,7 @@ Feature: Booking API functionalities
 
 
   Scenario: Create new user by reading JSON from file
-    Given url "https://reqres.in/api/users"
+    And path "/users"
     * def requestPayload = read('classpath:payloads/createBookingPayload.json')
     * print "<<=========== REQUEST PAYLOAD BEFORE ============>>"
     * print requestPayload
