@@ -1,4 +1,4 @@
-package utils;
+package utils.kafka;
 
 import java.util.List;
 import java.util.Properties;
