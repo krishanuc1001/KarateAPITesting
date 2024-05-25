@@ -5,11 +5,11 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-public class KafkaPublisher {
+public class PublishKafkaMessage {
 
   private KafkaProducer<String, String> kafkaProducer;
 
-  public KafkaPublisher(String brokers) {
+  public PublishKafkaMessage(String brokers) {
     Properties properties = configureKafka(brokers);
     this.kafkaProducer = new KafkaProducer<>(properties);
   }
@@ -38,8 +38,10 @@ public class KafkaPublisher {
   }
 
   public static void main(String[] args) {
-    KafkaPublisher publishMessageToTopic = new KafkaPublisher("localhost:9092");
+    PublishKafkaMessage publishMessageToTopic = new PublishKafkaMessage("localhost:9092");
     publishMessageToTopic.sendMessage("test-topic", "key", "Hello, Kafka!");
+    publishMessageToTopic.sendMessage("test-topic", "key", "<<=====MSG PRODUCED ONE=======>>");
+    publishMessageToTopic.sendMessage("test-topic", "key", "<<=====MSG PRODUCED TWO=======>>");
     publishMessageToTopic.closeProducer();
   }
 
